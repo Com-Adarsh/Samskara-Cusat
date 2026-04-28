@@ -166,6 +166,66 @@
             box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
         }
 
+        /* PREMIUM FOOTER CSS */
+        footer { 
+            margin-top: 100px;
+            padding: 80px 20px 40px; 
+            background: linear-gradient(to top, #0a0a0a, transparent);
+            border-top: 1px solid var(--border);
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-sec h4 { 
+            color: var(--secondary); 
+            margin-bottom: 20px; 
+            font-family: 'Urbanist', sans-serif;
+            font-size: 15px; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-sec p { 
+            color: #888; 
+            font-size: 14px; 
+            line-height: 1.8; 
+        }
+
+        .footer-sec a { 
+            color: #bbb; 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-sec a:hover { 
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-sec i {
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #444;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -197,27 +257,29 @@
     </div>
 </div>
 
-     <footer>
-        <div class="footer-sec">
-            <h4>About Samskara</h4>
-            <p> ക്യാമ്പസുകളിലെ സർഗ്ഗാത്മകതയെയും പുരോഗമന ചിന്തകളെയും ഒന്നിപ്പിക്കുന്ന സാംസ്കാരിക-സാഹിത്യ വിഭാഗമാണ് സംസ്കാര (Samskara). പഠനത്തോടൊപ്പം തന്നെ കല, സാഹിത്യം, സാമൂഹിക അവബോധം എന്നിവയും വിദ്യാർത്ഥി ജീവിതത്തിന്റെ അവിഭാജ്യ ഘടകമാണെന്ന് ഞങ്ങൾ വിശ്വസിക്കുന്നു.</p>
-        </div>
-        <div class="footer-sec">
-            <h4>Contact</h4>
-            <p><i class="fa-solid fa-envelope"></i> samskaracusat@gmail.com</p>
-            <p><i class="fa-solid fa-location-dot"></i> CUSAT, Kalamassery</p>
-        </div>
-        <div class="footer-sec">
-            <h4>Follow Us</h4>
-            <a href="https://www.instagram.com/samskara_cusat" target="_blank"><i class="fa-brands fa-instagram"></i> @samskara_cusat</a>
-        </div>
-    </footer>
+<footer>
+    <div class="footer-sec">
+        <h4>About Samskara</h4>
+        <p>ക്യാമ്പസുകളിലെ സർഗ്ഗാത്മകതയെയും പുരോഗമന ചിന്തകളെയും ഒന്നിപ്പിക്കുന്ന സാംസ്കാരിക-സാഹിത്യ വിഭാഗമാണ് സംസ്കാര. കലയും സാഹിത്യവും വിദ്യാർത്ഥി ജീവിതത്തിന്റെ അവിഭാജ്യ ഘടകമാണെന്ന് ഞങ്ങൾ വിശ്വസിക്കുന്നു.</p>
+    </div>
+    <div class="footer-sec">
+        <h4>Contact</h4>
+        <a href="mailto:samskaracusat@gmail.com"><i class="fa-solid fa-envelope"></i> samskaracusat@gmail.com</a>
+        <p><i class="fa-solid fa-location-dot"></i> CUSAT, Kalamassery, Kochi</p>
+    </div>
+    <div class="footer-sec">
+        <h4>Follow Us</h4>
+        <a href="https://www.instagram.com/samskara_cusat" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i> WhatsApp Channel</a>
+    </div>
+    <div class="copyright">
+        &copy; 2026 SAMSKARA CUSAT | Designed with <i class="fa-solid fa-heart" style="color:var(--primary)"></i> for Creatives
+    </div>
+</footer>
 
 <script>
-    // നിങ്ങളുടെ Apps Script URL ഇവിടെ നൽകുക
     const scriptURL = 'https://script.google.com/macros/s/AKfycbx7n7L4BDlV-lK5nrS8NAbOmtTe5sUQ0HSTzwVSuG1xwRgN5nKgIsnKNBAF2RlQ3GaY/exec';
 
-    // 1. ലോഡ് ഗാലറി
     async function loadGallery() {
         const galleryDiv = document.getElementById('galleryDisplay');
         try {
@@ -231,7 +293,6 @@
                 return;
             }
 
-            // ഏറ്റവും പുതിയത് മുകളിൽ വരാൻ reverse() ഉപയോഗിക്കുന്നു
             data.reverse().forEach((item) => {
                 galleryDiv.innerHTML += `
                     <div class="creation-card">
@@ -254,13 +315,11 @@
         }
     }
 
-    // 2. പുതിയ സൃഷ്ടി സബ്മിറ്റ് ചെയ്യുക
     async function submitToWall() {
         const title = document.getElementById('titleInput').value;
         const content = document.getElementById('contentInput').value;
         const btn = document.getElementById('mainBtn');
 
-        // Local Storage-ൽ നിന്ന് പേരും ഡിപ്പാർട്ട്മെന്റും എടുക്കുന്നു
         const name = localStorage.getItem('userName') || "Anonymous Student";
         const dept = localStorage.getItem('userDept') || "CUSAT";
 
@@ -293,7 +352,6 @@
         }
     }
 
-    // 3. ലൈക്ക് ഫങ്ക്ഷൻ
     async function handleLike(title, btn) {
         if(btn.classList.contains('active')) return;
 

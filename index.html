@@ -102,7 +102,6 @@
             box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
         }
 
-        /* Calendar Styling */
         input[type="date"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
             cursor: pointer;
@@ -160,10 +159,9 @@
 
     <header>
        <div class="logo-container">
-    <img src="https://raw.githubusercontent.com/Com-Adarsh/Samskara-Cusat/main/Picsart_25-09-01_16-58-09-038.png" alt="Samskara Logo" style="height: 60px;">
-</div>
-
-<div class="logo">SAMSKARA <span>CUSAT</span></div>
+            <img src="https://raw.githubusercontent.com/Com-Adarsh/Samskara-Cusat/main/Picsart_25-09-01_16-58-09-038.png" alt="Samskara Logo" style="height: 60px;">
+        </div>
+        <div class="logo">SAMSKARA <span>CUSAT</span></div>
     </header>
 
     <div class="form-container">
@@ -172,6 +170,8 @@
         </div>
 
         <form id="samskaraForm">
+            <input type="hidden" name="formType" value="registration">
+
             <div class="form-group">
                 <label>Full Name</label>
                 <input type="text" name="name" placeholder="Enter your name" required>
@@ -234,7 +234,7 @@
                         <option value="">Select Year</option>
                         <script>
                             const startYear = 2020;
-                            const endYear = 4055;
+                            const endYear = 5130; // Updated to a realistic range
                             for (let y = startYear; y <= endYear; y++) {
                                 document.write(`<option value="${y}">${y}</option>`);
                             }
@@ -303,19 +303,12 @@
     <footer>
         <div class="footer-sec">
             <h4>About Samskara</h4>
-            <p> ക്യാമ്പസുകളിലെ സർഗ്ഗാത്മകതയെയും പുരോഗമന ചിന്തകളെയും ഒന്നിപ്പിക്കുന്ന സാംസ്കാരിക-സാഹിത്യ വിഭാഗമാണ് സംസ്കാര (Samskara). പഠനത്തോടൊപ്പം തന്നെ കല, സാഹിത്യം, സാമൂഹിക അവബോധം എന്നിവയും വിദ്യാർത്ഥി ജീവിതത്തിന്റെ അവിഭാജ്യ ഘടകമാണെന്ന് ഞങ്ങൾ വിശ്വസിക്കുന്നു. എഴുത്ത്, സംഗീതം, നൃത്തം, ചിത്രരചന തുടങ്ങി വിവിധ മേഖലകളിൽ താല്പര്യമുള്ള വിദ്യാർത്ഥികൾക്ക് തങ്ങളുടെ കഴിവുകൾ പ്രകടിപ്പിക്കാൻ മികച്ച ഒരു വേദിയൊരുക്കുകയാണ് ഞങ്ങളുടെ ലക്ഷ്യം. കേവലം വിനോദത്തിനപ്പുറം, മതേതരത്വവും മാനവികതയും ഉയർത്തിപ്പിടിച്ചുകൊണ്ട് കലയെ സാമൂഹിക മാറ്റത്തിനുള്ള ഒരു ഉപാധിയായി ഞങ്ങൾ കാണുന്നു. ക്യാമ്പസിന്റെ സർഗ്ഗാത്മകമായ ഹൃദയമിടിപ്പായി നിലകൊള്ളുന്ന സംസ്കാര, സാമൂഹിക പ്രതിബദ്ധതയുള്ള ഒരു യുവതലമുറയെ വാർത്തെടുക്കാൻ പ്രതിജ്ഞാബദ്ധമാണ്.
-
-
-
-
-
-
-.</p>
+            <p> ക്യാമ്പസുകളിലെ സർഗ്ഗാത്മകതയെയും പുരോഗമന ചിന്തകളെയും ഒന്നിപ്പിക്കുന്ന സാംസ്കാരിക-സാഹിത്യ വിഭാഗമാണ് സംസ്കാര (Samskara). പഠനത്തോടൊപ്പം തന്നെ കല, സാഹിത്യം, സാമൂഹിക അവബോധം എന്നിവയും വിദ്യാർത്ഥി ജീവിതത്തിന്റെ അവിഭാജ്യ ഘടകമാണെന്ന് ഞങ്ങൾ വിശ്വസിക്കുന്നു.</p>
         </div>
         <div class="footer-sec">
             <h4>Contact</h4>
             <p><i class="fa-solid fa-envelope"></i> samskaracusat@gmail.com</p>
-            <p><i class="fa-solid fa-location-dot"></i> Cochin University of Science and Technology, Kalamassery, Ernakulam</p>
+            <p><i class="fa-solid fa-location-dot"></i> CUSAT, Kalamassery</p>
         </div>
         <div class="footer-sec">
             <h4>Follow Us</h4>
@@ -324,7 +317,6 @@
     </footer>
 
     <script>
-        // Set default date to today
         document.getElementById('datePicker').valueAsDate = new Date();
 
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx7n7L4BDlV-lK5nrS8NAbOmtTe5sUQ0HSTzwVSuG1xwRgN5nKgIsnKNBAF2RlQ3GaY/exec';
@@ -336,13 +328,22 @@
             btn.disabled = true;
             btn.innerHTML = "<i class='fa-solid fa-circle-notch fa-spin'></i> Submitting...";
 
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            const formData = new FormData(form);
+
+            fetch(scriptURL, { method: 'POST', body: formData})
                 .then(response => {
-                    alert("സ്വാഗതം! നിങ്ങളുടെ എൻട്രി വിജയകരമായി രേഖപ്പെടുത്തി.");
+                    // Update: Save data for Gallery and redirect
+                    localStorage.setItem('userName', formData.get('name'));
+                    localStorage.setItem('userDept', formData.get('dept'));
+
+                    alert("സ്വാഗതം! നിങ്ങളുടെ എൻട്രി വിജയകരമായി രേഖപ്പെടുത്തി. സാംസ്കാര ക്രിയേറ്റീവ് വാളിലേക്ക് നിങ്ങളെ സ്വാഗതം ചെയ്യുന്നു.");
+                    
                     form.reset();
                     btn.disabled = false;
                     btn.innerHTML = "SUBMIT";
-                    document.getElementById('datePicker').valueAsDate = new Date();
+                    
+                    // Redirect to Gallery page
+                    window.location.href = "gallery.html"; 
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
@@ -354,4 +355,3 @@
     </script>
 </body>
 </html>
-           

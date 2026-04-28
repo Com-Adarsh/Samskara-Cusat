@@ -316,42 +316,50 @@
         </div>
     </footer>
 
-    <script>
+  <script>
+    // 1. പേജ് ലോഡ് ചെയ്യുമ്പോൾ പഴയ യൂസർ ആണോ എന്ന് പരിശോധിക്കുന്നു
+    window.onload = function() {
+        if (localStorage.getItem('isRegistered') === 'true') {
+            window.location.href = "gallery.html";
+        }
+        // നിലവിലുള്ള ഡേറ്റ് സെറ്റിംഗ്
         document.getElementById('datePicker').valueAsDate = new Date();
+    };
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbx7n7L4BDlV-lK5nrS8NAbOmtTe5sUQ0HSTzwVSuG1xwRgN5nKgIsnKNBAF2RlQ3GaY/exec';
-        const form = document.getElementById('samskaraForm');
-        const btn = document.getElementById('submitBtn');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx7n7L4BDlV-lK5nrS8NAbOmtTe5sUQ0HSTzwVSuG1xwRgN5nKgIsnKNBAF2RlQ3GaY/exec';
+    const form = document.getElementById('samskaraForm');
+    const btn = document.getElementById('submitBtn');
 
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            btn.disabled = true;
-            btn.innerHTML = "<i class='fa-solid fa-circle-notch fa-spin'></i> Submitting...";
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerHTML = "<i class='fa-solid fa-circle-notch fa-spin'></i> Submitting...";
 
-            const formData = new FormData(form);
+        const formData = new FormData(form);
 
-            fetch(scriptURL, { method: 'POST', body: formData})
-                .then(response => {
-                    // Update: Save data for Gallery and redirect
-                    localStorage.setItem('userName', formData.get('name'));
-                    localStorage.setItem('userDept', formData.get('dept'));
+        fetch(scriptURL, { method: 'POST', body: formData})
+            .then(response => {
+                // 2. ഗാലറിയിലേക്ക് ആവശ്യമായ ഡാറ്റയും സ്റ്റാറ്റസും സേവ് ചെയ്യുന്നു
+                localStorage.setItem('userName', formData.get('name'));
+                localStorage.setItem('userDept', formData.get('dept'));
+                localStorage.setItem('isRegistered', 'true'); // ഇതാണ് പ്രധാന മാറ്റം
 
-                    alert("സ്വാഗതം! നിങ്ങളുടെ എൻട്രി വിജയകരമായി രേഖപ്പെടുത്തി. സാംസ്കാര ക്രിയേറ്റീവ് വാളിലേക്ക് നിങ്ങളെ സ്വാഗതം ചെയ്യുന്നു.");
-                    
-                    form.reset();
-                    btn.disabled = false;
-                    btn.innerHTML = "SUBMIT";
-                    
-                    // Redirect to Gallery page
-                    window.location.href = "gallery.html"; 
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    alert("Something went wrong. Please try again.");
-                    btn.disabled = false;
-                    btn.innerHTML = "SUBMIT";
-                });
-        });
-    </script>
+                alert("സ്വാഗതം! നിങ്ങളുടെ എൻട്രി വിജയകരമായി രേഖപ്പെടുത്തി. സാംസ്കാര ക്രിയേറ്റീവ് വാളിലേക്ക് നിങ്ങളെ സ്വാഗതം ചെയ്യുന്നു.");
+                
+                form.reset();
+                btn.disabled = false;
+                btn.innerHTML = "SUBMIT";
+                
+                // ഗാലറി പേജിലേക്ക് വിടുന്നു
+                window.location.href = "gallery.html"; 
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("Something went wrong. Please try again.");
+                btn.disabled = false;
+                btn.innerHTML = "SUBMIT";
+            });
+    });
+</script>
 </body>
 </html>

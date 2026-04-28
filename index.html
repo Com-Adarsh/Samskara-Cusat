@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samskara CUSAT </title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #ef4444; 
+            --secondary: #fbbf24; 
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 50% 50%, #1a0505 0%, #050505 100%);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            margin: 0; padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header { 
+            padding: 40px 20px; 
+            text-align: center; 
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .logo { 
+            font-family: 'Urbanist', sans-serif; 
+            font-size: 42px; 
+            color: var(--secondary); 
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+        }
+        .logo span { color: var(--primary); }
+
+        .form-container { 
+            max-width: 600px; 
+            margin: 0 auto 60px; 
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 50px; 
+            border-radius: 28px; 
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-text {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .hero-text p {
+            color: #aaa;
+            font-style: italic;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .form-group { margin-bottom: 25px; }
+        
+        label { 
+            display: block; 
+            margin-bottom: 10px; 
+            color: var(--secondary); 
+            font-size: 12px; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        input, select { 
+            width: 100%; 
+            padding: 14px; 
+            background: rgba(255,255,255,0.07); 
+            border: 1px solid var(--border); 
+            color: #fff; 
+            border-radius: 12px; 
+            font-size: 16px; 
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus { 
+            border-color: var(--primary); 
+            background: rgba(255,255,255,0.12);
+            outline: none;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .flex-group { display: flex; gap: 20px; }
+        .flex-group > div { flex: 1; }
+
+        button { 
+            width: 100%; 
+            padding: 18px; 
+            background: linear-gradient(45deg, var(--primary), #991b1b); 
+            color: #fff; 
+            border: none; 
+            border-radius: 12px; 
+            font-size: 18px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        button:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.4);
+        }
+
+        footer { 
+            margin-top: auto;
+            padding: 50px 20px; 
+            background: rgba(0,0,0,0.8); 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-sec h4 { color: var(--primary); margin-bottom: 15px; font-size: 14px; letter-spacing: 2px; }
+        .footer-sec p, .footer-sec a { color: #888; text-decoration: none; font-size: 14px; line-height: 1.8; }
+        .footer-sec a:hover { color: var(--secondary); }
+
+        optgroup { background: #111; color: var(--secondary); }
+        option { background: #111; color: #fff; }
+
+        @media (max-width: 600px) {
+            .form-container { padding: 30px 20px; margin: 10px; }
+            .flex-group { flex-direction: column; gap: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SAMSKARA <span>CUSAT</span></div>
+    </header>
+
+    <div class="form-container">
+        <div class="hero-text">
+            <p>"അക്ഷരങ്ങൾക്കും അറിവിനും അപ്പുറം, ആവിഷ്കാരത്തിൻ്റെ അനന്തമായ ആകാശമാണ് 'സംസ്കാര കുസാറ്റ്'. കുസാറ്റ് ക്യാമ്പസിൻ്റെ മണ്ണിൽ സർഗ്ഗാത്മകതയുടെ വിത്തുകൾ പാകാനും, കലയെ മനുഷ്യപക്ഷത്ത് നിർത്തിക്കൊണ്ട് പുതിയൊരു സാംസ്കാരിക ബോധം പടുത്തുയർത്താനുമുള്ള ഒരു തുറന്ന വേദി.
+നൃത്തവും പാട്ടും നാടകവും വായനയും ഒരു പുഴപോലെ ഒഴുകുന്ന ഈ ഇടം, ഓരോ വിദ്യാർത്ഥിയിലെയും കലാകാരനെ തൊട്ടുണർത്തുന്നു. വൈവിധ്യങ്ങളെ നെഞ്ചേറ്റുന്ന, വിയോജിപ്പുകളെ മാനിക്കുന്ന, സ്നേഹത്തിൻ്റെയും സാഹോദര്യത്തിൻ്റെയും ഭാഷ സംസാരിക്കുന്ന ഒരു സാംസ്കാരിക കൂട്ടായ്മയാണിത്."</p>
+        </div>
+
+        <form id="samskaraForm">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label>WhatsApp Number</label>
+                <input type="tel" name="phone" placeholder="9876XXXXXX" required>
+            </div>
+
+            <div class="form-group">
+                <label>Department</label>
+                <input list="depts" name="dept" placeholder="Select or Search Department..." required>
+                <datalist id="depts">
+                    <option value="Centre for Budget Studies">
+                    <option value="Centre for Integrated Studies">
+                    <option value="CUCEK Kuttanad">
+                    <option value="DDU Kaushal Kendras (DDUKK)">
+                    <option value="Department of Applied Chemistry">
+                    <option value="Department of Applied Economics">
+                    <option value="Department of Atmospheric Sciences">
+                    <option value="Department of Biotechnology">
+                    <option value="Department of Chemical Oceanography">
+                    <option value="Department of Computer Applications">
+                    <option value="Department of Computer Science">
+                    <option value="Department of Electronics">
+                    <option value="Department of English and Foreign Languages">
+                    <option value="Department of Hindi">
+                    <option value="Department of Instrumentation">
+                    <option value="Department of Marine Biology">
+                    <option value="Department of Marine Geology and Geophysics">
+                    <option value="Department of Mathematics">
+                    <option value="Department of Physical Oceanography">
+                    <option value="Department of Physics">
+                    <option value="Department of Polymer Science and Rubber Tech">
+                    <option value="Department of Ship Technology">
+                    <option value="Department of Statistics">
+                    <option value="Inter University Centre for IPR Studies">
+                    <option value="International School of Photonics">
+                    <option value="Kunjali Marakkar School of Marine Engineering">
+                    <option value="NCAAH">
+                    <option value="School of Environmental Studies">
+                    <option value="School of Industrial Fisheries">
+                    <option value="School of Legal Studies (SLS)">
+                    <option value="School of Management Studies (SMS)">
+                    <option value="Civil Engineering SOE">
+                    <option value="Mechanical Engineering SOE">
+                    <option value="Electrical Engineering SOE">
+                    <option value="Electronics and Communication SOE">
+                    <option value="Computer Science and Engineering SOE">
+                    <option value="Information Technology SOE">
+                    <option value="Safety & Fire Engineering SOE">
+                </datalist>
+            </div>
+
+            <div class="flex-group">
+                <div class="form-group">
+                    <label>Passing Year</label>
+                    <input type="number" name="year" placeholder="2027" required>
+                </div>
+                <div class="form-group">
+                    <label>Blood Group</label>
+                    <input type="text" name="blood" placeholder="O+ve">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Creative Domain</label>
+                <select name="arts" required>
+                    <option value="">Choose your field...</option>
+                    <optgroup label="Arts & Performing Arts">
+                        <option value="Painting (Oil, Water Color,ETC)">Painting</option>
+                        <option value="Drawing">Drawing</option>
+                        <option value="Sculpture (Clay, Metal, Wood,ETC)">Sculpture</option>
+                        <option value="Dance (Bharatanatyam, Kathakali, Mohiniyattam, Kuchipudi, Western,ETC)">Dance</option>
+                        <option value="Music (Carnatic, Hindustani, Folk)">Music</option>
+                        <option value="Theatre (Street, Classical, Shadow Play)">Theatre</option>
+                        <option value="Fashion">Fashion</option>
+                    </optgroup>
+                    <optgroup label="Literature">
+                        <option value="Poetry (Ghazals, Lyrics, Classical)">Poetry</option>
+                        <option value="Prose (Novels, Short Stories, Essays)">Prose</option>
+                        <option value="Drama/Plays (Scripts)">Drama/Plays</option>
+                        <option value="Folklore (Proverbs, Legends, Folk songs)">Folklore</option>
+                    </optgroup>
+                    <optgroup label="Visual Media">
+                        <option value="Photography">Photography</option>
+                        <option value="Cinema">Cinema</option>
+                        <option value="Designing (Graphic/UI/UX)">Designing</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Interested in Active Participation?</label>
+                <select name="active">
+                    <option value="Yes">Yes, count me in!</option>
+                    <option value="No">No, just joining</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submitBtn">SUBMIT</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-sec">
+            <h4>About Samskara</h4>
+            <p>A revolutionary student collective dedicated to fostering arts, culture, and creative activism within CUSAT.</p>
+        </div>
+        <div class="footer-sec">
+            <h4>Contact</h4>
+            <p><i class="fa-solid fa-envelope"></i> samskaracusat@gmail.com</p>
+            <p><i class="fa-solid fa-location-dot"></i> Cochin University of Science and Technology, Kalamassery,Ernakulam</p>
+        </div>
+        <div class="footer-sec">
+            <h4>Follow Us</h4>
+            <a href="https://instagram.com/samskara_cusat" target="_blank"><i class="fa-brands fa-instagram"></i> @samskara_cusat</a>
+        </div>
+    </footer>
+
+    <script>
+        // Replace with your Google Apps Script Web App URL
+        const scriptURL = 'YOUR_GOOGLE_APP_SCRIPT_URL_HERE';
+        const form = document.getElementById('samskaraForm');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.innerHTML = "<i class='fa-solid fa-circle-notch fa-spin'></i> Submitting...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    alert("സ്വാഗതം! നിങ്ങളുടെ എൻട്രി വിജയകരമായി രേഖപ്പെടുത്തി.");
+                    form.reset();
+                    btn.disabled = false;
+                    btn.innerHTML = "Join the Revolution";
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Something went wrong. Please try again.");
+                    btn.disabled = false;
+                    btn.innerHTML = "Join the Revolution";
+                });
+        });
+    </script>
+</body>
+</html>

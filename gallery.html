@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samskara Creative Wall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #ef4444; 
+            --secondary: #fbbf24; 
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 50% 50%, #1a0505 0%, #050505 100%);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            margin: 0; padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0 30px;
+        }
+
+        .logo {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 36px;
+            color: var(--secondary);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        .logo span { color: var(--primary); }
+
+        /* CREATION CARDS SECTION */
+        #galleryDisplay {
+            margin-bottom: 60px;
+            min-height: 200px;
+        }
+
+        .creation-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--primary);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .creation-card:hover {
+            transform: translateY(-10px);
+            border-left-color: var(--secondary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .creation-card h3 {
+            margin: 0 0 15px 0;
+            color: var(--secondary);
+            font-family: 'Urbanist', sans-serif;
+            font-size: 24px;
+        }
+
+        .creation-card p {
+            line-height: 1.8;
+            color: #ccc;
+            font-size: 16px;
+            white-space: pre-wrap;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .author-info {
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .like-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: #aaa;
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .like-btn:hover, .like-btn.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        /* WRITE SECTION */
+        .write-section {
+            background: var(--glass);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            margin-bottom: 50px;
+            backdrop-filter: blur(20px);
+        }
+
+        .write-section h2 {
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 16px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            color: #fff;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, var(--primary), #991b1b);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s;
+        }
+
+        .submit-btn:hover {
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading { text-align: center; padding: 40px; color: var(--secondary); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">CREATIVE <span>WALL</span></div>
+        <p style="color: #666; margin-top: 10px;">സാംസ്കാരയുടെ സർഗ്ഗവേദിയിലേക്ക് സ്വാഗതം</p>
+    </header>
+
+    <div id="galleryDisplay">
+        <div class="loading">
+            <i class="fa-solid fa-circle-notch fa-spin fa-2x"></i>
+            <p>സൃഷ്ടികൾ ലോഡ് ചെയ്യുന്നു...</p>
+        </div>
+    </div>
+
+    <div class="write-section">
+        <h2><i class="fa-solid fa-pen-nib"></i> പുതിയ സൃഷ്ടി എഴുതൂ</h2>
+        <input type="text" id="titleInput" placeholder="തലക്കെട്ട് (Title)">
+        <textarea id="contentInput" rows="6" placeholder="നിങ്ങളുടെ കഥയോ കവിതയോ ഇവിടെ എഴുതുക..."></textarea>
+        <button class="submit-btn" onclick="submitToWall()" id="mainBtn">സബ്മിറ്റ് ചെയ്യുക</button>
+    </div>
+</div>
+
+<script>
+    // നിങ്ങളുടെ Apps Script URL ഇവിടെ നൽകുക
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx7n7L4BDlV-lK5nrS8NAbOmtTe5sUQ0HSTzwVSuG1xwRgN5nKgIsnKNBAF2RlQ3GaY/exec';
+
+    // 1. ലോഡ് ഗാലറി
+    async function loadGallery() {
+        const galleryDiv = document.getElementById('galleryDisplay');
+        try {
+            const response = await fetch(scriptURL);
+            const data = await response.json();
+            
+            galleryDiv.innerHTML = "";
+
+            if(data.length === 0) {
+                galleryDiv.innerHTML = "<p style='text-align:center; color:#555;'>സൃഷ്ടികളൊന്നും ഇപ്പോൾ ലഭ്യമല്ല.</p>";
+                return;
+            }
+
+            // ഏറ്റവും പുതിയത് മുകളിൽ വരാൻ reverse() ഉപയോഗിക്കുന്നു
+            data.reverse().forEach((item) => {
+                galleryDiv.innerHTML += `
+                    <div class="creation-card">
+                        <h3>${item.Title}</h3>
+                        <p>${item.Content}</p>
+                        <div class="card-footer">
+                            <div class="author-info">
+                                <i class="fa-solid fa-user-edit"></i> ${item.Name} | ${item.Dept}
+                            </div>
+                            <button class="like-btn" onclick="handleLike('${item.Title}', this)">
+                                <i class="fa-solid fa-heart"></i> 
+                                <span class="like-count">${item.Likes || 0}</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        } catch (error) {
+            galleryDiv.innerHTML = "<p style='text-align:center; color:red;'>Error loading gallery.</p>";
+        }
+    }
+
+    // 2. പുതിയ സൃഷ്ടി സബ്മിറ്റ് ചെയ്യുക
+    async function submitToWall() {
+        const title = document.getElementById('titleInput').value;
+        const content = document.getElementById('contentInput').value;
+        const btn = document.getElementById('mainBtn');
+
+        // Local Storage-ൽ നിന്ന് പേരും ഡിപ്പാർട്ട്മെന്റും എടുക്കുന്നു
+        const name = localStorage.getItem('userName') || "Anonymous Student";
+        const dept = localStorage.getItem('userDept') || "CUSAT";
+
+        if(!title || !content) {
+            alert("ദയവായി എല്ലാ കോളങ്ങളും പൂരിപ്പിക്കുക.");
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerHTML = "അയക്കുന്നു...";
+
+        const formData = new FormData();
+        formData.append('formType', 'creative');
+        formData.append('Name', name);
+        formData.append('Dept', dept);
+        formData.append('Title', title);
+        formData.append('Content', content);
+
+        try {
+            await fetch(scriptURL, { method: 'POST', body: formData });
+            alert("നന്ദി! അഡ്മിൻ പരിശോധിച്ച ശേഷം നിങ്ങളുടെ സൃഷ്ടി ഗാലറിയിൽ പ്രസിദ്ധീകരിക്കും.");
+            document.getElementById('titleInput').value = "";
+            document.getElementById('contentInput').value = "";
+            loadGallery();
+        } catch (error) {
+            alert("എറർ സംഭവിച്ചു. വീണ്ടും ശ്രമിക്കുക.");
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = "സബ്മിറ്റ് ചെയ്യുക";
+        }
+    }
+
+    // 3. ലൈക്ക് ഫങ്ക്ഷൻ
+    async function handleLike(title, btn) {
+        if(btn.classList.contains('active')) return;
+
+        const countSpan = btn.querySelector('.like-count');
+        countSpan.innerText = parseInt(countSpan.innerText) + 1;
+        btn.classList.add('active');
+
+        const formData = new FormData();
+        formData.append('action', 'like');
+        formData.append('title', title);
+
+        try {
+            await fetch(scriptURL, { method: 'POST', body: formData });
+        } catch (e) { console.log("Like error"); }
+    }
+
+    window.onload = loadGallery;
+</script>
+
+</body>
+</html>

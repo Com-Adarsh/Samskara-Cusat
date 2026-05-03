@@ -5,34 +5,40 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function IntroSplash({ onComplete }) {
   const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(() => {
-    // Set a timer to automatically finish the intro (e.g., 4 seconds)
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-      setTimeout(onComplete, 1000); // Wait for exit animation
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, [onComplete]);
-
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ y: '-100vh', opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          exit={{ opacity: 0 }} // Fades out smoothly to reveal the site
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           style={styles.container}
         >
-          {/* You can replace this <div> with a <video> tag later */}
           <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.5 }}
-            style={styles.logoContainer}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+            style={styles.videoWrapper}
           >
-            <h1 style={styles.title}>SAMSKARA</h1>
-            <div style={styles.underline}></div>
-            <p style={styles.subtitle}>CUSAT ARTISTIC COLLECTIVE</p>
+            <video 
+              autoPlay 
+              muted 
+              playsInline 
+              onEnded={() => {
+                setIsVisible(false);
+                setTimeout(onComplete, 1200);
+              }}
+              style={styles.video}
+            >
+              <source src="/samskara-intro.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            {/* Optional: Overlaying the text softly over the video */}
+            <div style={styles.textOverlay}>
+              <h1 style={styles.title}>SAMSKARA</h1>
+              <p style={styles.subtitle}>CUSAT ARTISTIC COLLECTIVE</p>
+            </div>
           </motion.div>
         </motion.div>
       )}
@@ -47,30 +53,50 @@ const styles = {
     left: 0,
     width: '100vw',
     height: '100vh',
-    backgroundColor: '#000000', // Black background
+    backgroundColor: '#000000', // True Black
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 9999,
+    overflow: 'hidden'
   },
-  logoContainer: { textAlign: 'center' },
-  title: {
-    fontSize: '4rem',
-    color: '#FF0000', // Red
-    letterSpacing: '10px',
-    margin: 0,
-    fontWeight: '900',
-  },
-  underline: {
-    height: '4px',
-    backgroundColor: '#FFD700', // Yellow
+  videoWrapper: {
+    position: 'relative',
     width: '100%',
-    marginTop: '10px'
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  video: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    // KEY BLENDING TRICK:
+    // 'screen' blend mode makes the black parts of the video transparent
+    mixBlendMode: 'screen', 
+    filter: 'contrast(1.2) brightness(0.8)', // Ensures the reds/yellows pop while blacks stay deep
+  },
+  textOverlay: {
+    position: 'absolute',
+    textAlign: 'center',
+    pointerEvents: 'none' // Clicks pass through to the video
+  },
+  title: {
+    fontFamily: "'Syncopate', sans-serif",
+    fontSize: '3.5rem',
+    color: '#FF0000',
+    letterSpacing: '12px',
+    margin: 0,
+    fontWeight: '700',
+    textShadow: '0 0 20px rgba(255, 0, 0, 0.4)' // Soft red glow
   },
   subtitle: {
+    fontFamily: "'Inter', sans-serif",
     color: '#FFFFFF',
-    marginTop: '15px',
-    letterSpacing: '3px',
-    fontSize: '1rem'
+    marginTop: '10px',
+    letterSpacing: '5px',
+    fontSize: '0.8rem',
+    opacity: 0.8
   }
 };

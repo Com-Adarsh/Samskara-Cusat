@@ -30,7 +30,7 @@ export default function IntroSplash({ onComplete }) {
               }}
               style={styles.video}
             >
-              <source src="/samskara-intro.mp4" type="video/mp4" />
+              <source src="https://github.com/Com-Adarsh/Samskara-Cusat/blob/main/Public/Images/SAMSKARA_Title_Sequence_In_a_cinematic_style_two_flowing_ribbons_one_Uiy_e3sE.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 

@@ -1,0 +1,23 @@
+samskara-app/
+├── components/           # Reusable UI elements
+│   ├── FilterBar.js
+│   ├── InstagramFeed.js
+│   ├── IntroSplash.js
+│   ├── PhotoGallery.js
+│   └── ProcessSlider.js
+├── pages/                # Routes (Next.js automatically creates pages from here)
+│   ├── _app.js           # Global styles and layout
+│   ├── _document.js      # Global HTML structure (Head tags)
+│   └── index.js          # Your Main Homepage
+├── public/               # Static Assets (Accessible via "/")
+│   ├── images/
+│   │   ├── paintings/    # Slider images (sketch/final)
+│   │   └── gallery/      # Fallback gallery images
+│   ├── SAMSKARA_Title_.mp4
+│   └── favicon.ico
+├── styles/               # Global CSS files
+│   └── globals.css
+├── utils/                # Logic and API helpers
+│   └── GoogleSheetLib.js # Fetching data from Google Sheets
+├── package.json          # Project dependencies (framer-motion, etc.)
+└── .gitignore            # Files to ignore (node_modules, .next)
